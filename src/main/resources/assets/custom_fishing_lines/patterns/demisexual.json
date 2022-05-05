@@ -1,0 +1,24 @@
+{
+	"segments": [
+		{
+			"color": "ffffff",
+			"percentage": 0.6875
+		},
+		{
+			"color": "6d0070",
+			"percentage": 0.5625
+		},
+		{
+			"color": "000000",
+			"percentage": 0.4375
+		},
+		{
+			"color": "6d0070",
+			"percentage": 0.3125
+		},
+		{
+			"color": "d2d2d2",
+			"percentage": 0
+		}
+	]
+}

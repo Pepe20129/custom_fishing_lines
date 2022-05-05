@@ -1,0 +1,56 @@
+{
+	"schema_version": 1,
+	"quilt_loader": {
+		"group": "io.github.pepe20129",
+		"id": "custom_fishing_lines",
+		"version": "${version}",
+		"entrypoints": {
+			"client_init": "io.github.pepe20129.custom_fishing_lines.QuiltCustomFishingLines",
+			"modmenu": "io.github.pepe20129.custom_fishing_lines.modmenu.ModMenuApiImpl"
+		},
+		"depends": [
+			{
+				"id": "java",
+				"versions": ">=17"
+			},
+			{
+				"id": "minecraft",
+				"versions": "1.18.x"
+			},
+			{
+				"id": "fabricloader",
+				"versions": ">=0.12.11"
+			},
+			{
+				"id": "fabric-resource-loader-v0"
+			},
+			{
+				"id": "cloth-config",
+				"versions": "6.x"
+			}
+		],
+		"suggests": [
+			{
+				"id": "modmenu"
+			}
+		],
+		"intermediate_mappings": "net.fabricmc:intermediary",
+		"metadata": {
+			"name": "Custom Fishing Lines",
+			"description": "Adds the ability to have custom colored fishing lines controlled thru resourcepacks",
+			"contributors": {
+				"Pepe20129/Pablo#1981": "Author"
+			},
+			"contact": {
+				"homepage": "https://github.com/Pepe20129/custom_fishing_lines",
+				"issues": "https://github.com/Pepe20129/custom_fishing_lines/issues",
+				"sources": "https://github.com/Pepe20129/custom_fishing_lines"
+			},
+			"license": "LGPL-3.0-only"
+		}
+	},
+	"mixin": "custom_fishing_lines.mixins.json",
+	"minecraft": {
+		"environment": "client"
+	}
+}

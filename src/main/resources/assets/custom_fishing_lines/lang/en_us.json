@@ -1,0 +1,9 @@
+{
+	"title.custom_fishing_lines.config": "Custom Fishing Lines",
+	"option.custom_fishing_lines.enabled": "Enabled",
+	"option.custom_fishing_lines.enabled.tooltip": "Sets whether or not the mod is enabled",
+	"option.custom_fishing_lines.pattern": "Pattern",
+	"option.custom_fishing_lines.pattern.tooltip": "Sets the specific pattern that's being used",
+	"option.custom_fishing_lines.percentage_bias": "Percentage bias",
+	"option.custom_fishing_lines.percentage_bias.tooltip": "Sets the bias given to the percentages of the pattern"
+}

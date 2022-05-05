@@ -1,0 +1,33 @@
+{
+	"schemaVersion": 1,
+	"id": "custom_fishing_lines",
+	"version": "${version}",
+	"name": "Custom Fishing Lines",
+	"description": "Adds the ability to have custom colored fishing lines controlled thru resourcepacks",
+	"authors": [
+		"Pablo#1981/Pepe20129"
+	],
+	"license": "LGPL-3.0-only",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"io.github.pepe20129.custom_fishing_lines.FabricCustomFishingLines"
+		],
+		"modmenu": [
+			"io.github.pepe20129.custom_fishing_lines.modmenu.ModMenuApiImpl"
+		]
+	},
+	"mixins": [
+		"custom_fishing_lines.mixins.json"
+	],
+	"depends": {
+		"java": ">=17",
+		"minecraft": "1.18.x",
+		"fabricloader": ">=0.13.3",
+		"fabric-resource-loader-v0": "*",
+		"cloth-config": "6.x"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}

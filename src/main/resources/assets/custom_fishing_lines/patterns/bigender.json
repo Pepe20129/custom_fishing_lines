@@ -1,0 +1,32 @@
+{
+	"segments": [
+		{
+			"color": "c479a0",
+			"percentage": 0.85
+		},
+		{
+			"color": "eca6cb",
+			"percentage": 0.71
+		},
+		{
+			"color": "d6c7e9",
+			"percentage": 0.57
+		},
+		{
+			"color": "ffffff",
+			"percentage": 0.42
+		},
+		{
+			"color": "d6c7e9",
+			"percentage": 0.28
+		},
+		{
+			"color": "9bc7e8",
+			"percentage": 0.14
+		},
+		{
+			"color": "6b83cf",
+			"percentage": 0
+		}
+	]
+}
