@@ -30,19 +30,22 @@ public abstract class FishingBobberEntityRendererMixin {
 	private void modifyRender(FishingBobberEntity fishingBobberEntity, float f, float g, MatrixStack matrixStack, VertexConsumerProvider vertexConsumerProvider, int i, CallbackInfo ci, PlayerEntity playerEntity, MatrixStack.Entry entry, Matrix4f matrix4f, Matrix3f matrix3f, VertexConsumer vertexConsumer, int j, ItemStack itemStack, float h, float k, float l, double d, double e, double m, double n, double o, double p, double q, float r, double s, double t, double u, float v, float w, float x, VertexConsumer vertexConsumer2, MatrixStack.Entry entry2, int y, int z) {
 		if (z == 0) {
 			Config config = ConfigHelper.getConfig();
-			int segmentCount;
-			if (config.enabled && CustomFishingLines.PATTERNS.containsKey(config.pattern)) {
-				segmentCount = CustomFishingLines.PATTERNS.get(config.pattern).segments.size();
-				if (segmentCount <= 5) {
-					segmentCount *= 3;
-				} else if (segmentCount <= 10) {
-					segmentCount *= 2;
+			int segmentCount = 16;
+			if (config.enabled) {
+				if (config.segmentCount != -1) {
+					segmentCount = config.segmentCount;
+				} else if (CustomFishingLines.PATTERNS.containsKey(config.pattern)) {
+					segmentCount = CustomFishingLines.PATTERNS.get(config.pattern).segments.size();
+					if (segmentCount <= 5) {
+						segmentCount *= 3;
+					} else if (segmentCount <= 10) {
+						segmentCount *= 2;
+					}
 				}
-			} else {
-				segmentCount = 16;
 			}
+
 			for (int a = 0; a <= segmentCount; a += 1) {
-				customRenderFishingLine(v, w, x, vertexConsumer2, entry2, a / (float)segmentCount, (a + 1) / (float)segmentCount);
+				customFishingLines$renderFishingLine(v, w, x, vertexConsumer2, entry2, a / (float)segmentCount, (a + 1) / (float)segmentCount);
 			}
 		}
 	}
@@ -70,7 +73,7 @@ public abstract class FishingBobberEntityRendererMixin {
 	private MatrixStack.Entry customFishingLines$matrices;
 
 	@Unique
-	private void customRenderFishingLine(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd) {
+	private void customFishingLines$renderFishingLine(float x, float y, float z, VertexConsumer buffer, MatrixStack.Entry matrices, float segmentStart, float segmentEnd) {
 		customFishingLines$buffer = buffer;
 		customFishingLines$matrices = matrices;
 		customFishingLines$xPercentage = x * segmentStart;
@@ -94,16 +97,16 @@ public abstract class FishingBobberEntityRendererMixin {
 					int red = Integer.parseInt(hexColor.substring(0, 2), 16);
 					int green = Integer.parseInt(hexColor.substring(2, 4), 16);
 					int blue = Integer.parseInt(hexColor.substring(4, 6), 16);
-					addMatrices(red, green, blue);
+					customFishingLines$addMatrices(red, green, blue);
 				}
 			}
 		} else {
-			addMatrices(0, 0, 0);
+			customFishingLines$addMatrices(0, 0, 0);
 		}
 	}
 
 	@Unique
-	private void addMatrices(int red, int green, int blue) {
+	private void customFishingLines$addMatrices(int red, int green, int blue) {
 		customFishingLines$buffer.vertex(customFishingLines$matrices.getPositionMatrix(), customFishingLines$xPercentage, customFishingLines$g, customFishingLines$zPercentage).color(red, green, blue, 255).normal(customFishingLines$matrices.getNormalMatrix(), customFishingLines$xPercentageLeft, customFishingLines$j, customFishingLines$zPercentageLeft).next();
 	}
 }

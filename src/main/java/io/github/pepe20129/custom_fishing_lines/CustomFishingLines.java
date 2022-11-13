@@ -31,22 +31,24 @@ public class CustomFishingLines {
 		clientResources.registerReloadListener(new SimpleSynchronousResourceReloadListener() {
 			@Override
 			public void reload(ResourceManager manager) {
-				for (Identifier id : manager.findResources("patterns", path -> path.endsWith(".json"))) {
-					try (InputStream inputStream = manager.getResource(id).getInputStream()) {
-						String rawData = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
-						inputStream.close();
-						Gson gson = new GsonBuilder().create();
-						Pattern pattern = gson.fromJson(rawData, Pattern.class);
-						String path = id.getPath();
-						//remove ".json"
-						path = path.substring(0, path.length() - 5);
-						//remove "patterns/"
-						path = path.substring(9);
-						PATTERNS.put(path, pattern);
-					} catch (Exception exception) {
-						LOGGER.error("Error occurred while parsing: \"" + id.toString() + "\"", exception);
+				manager.findResources("patterns", path -> path.getPath().endsWith(".json")).forEach(
+					(key, value) -> {
+						try (InputStream inputStream = value.getInputStream()) {
+							String rawData = IOUtils.toString(inputStream, StandardCharsets.UTF_8);
+							inputStream.close();
+							Gson gson = new GsonBuilder().create();
+							Pattern pattern = gson.fromJson(rawData, Pattern.class);
+							String path = key.getPath();
+							//remove ".json"
+							path = path.substring(0, path.length() - 5);
+							//remove "patterns/"
+							path = path.substring(9);
+							PATTERNS.put(path, pattern);
+						} catch (Exception exception) {
+							LOGGER.error("Error occurred while parsing: \"" + key.toString() + "\"", exception);
+						}
 					}
-				}
+				);
 			}
 
 			@Override

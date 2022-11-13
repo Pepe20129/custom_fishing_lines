@@ -15,18 +15,18 @@
 			},
 			{
 				"id": "minecraft",
-				"versions": "1.18.x"
+				"versions": "1.19.2"
 			},
 			{
-				"id": "fabricloader",
-				"versions": ">=0.12.11"
+				"id": "quilt_loader",
+				"versions": ">=0.16.0"
 			},
 			{
 				"id": "fabric-resource-loader-v0"
 			},
 			{
 				"id": "cloth-config",
-				"versions": "6.x"
+				"versions": "8.x"
 			}
 		],
 		"suggests": [

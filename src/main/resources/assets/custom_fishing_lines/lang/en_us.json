@@ -5,5 +5,7 @@
 	"option.custom_fishing_lines.pattern": "Pattern",
 	"option.custom_fishing_lines.pattern.tooltip": "Sets the specific pattern that's being used",
 	"option.custom_fishing_lines.percentage_bias": "Percentage bias",
-	"option.custom_fishing_lines.percentage_bias.tooltip": "Sets the bias given to the percentages of the pattern"
+	"option.custom_fishing_lines.percentage_bias.tooltip": "Sets the bias given to the percentages of the pattern",
+	"option.custom_fishing_lines.segment_count": "Segment count override",
+	"option.custom_fishing_lines.segment_count.tooltip": "Overrides the segment count of the fishing rod's rendering\n-1 disables this"
 }

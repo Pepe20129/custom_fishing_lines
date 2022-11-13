@@ -4,4 +4,5 @@ public class Config {
 	public boolean enabled = true;
 	public String pattern = "";
 	public float percentageBias = 2;
+	public int segmentCount = -1;
 }

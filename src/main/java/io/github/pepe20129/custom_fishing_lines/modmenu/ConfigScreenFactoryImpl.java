@@ -8,39 +8,45 @@ import me.shedaniel.clothconfig2.api.ConfigBuilder;
 import me.shedaniel.clothconfig2.api.ConfigCategory;
 import me.shedaniel.clothconfig2.api.ConfigEntryBuilder;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.Text;
 
 public class ConfigScreenFactoryImpl implements ConfigScreenFactory<Screen> {
 	@Override
 	public Screen create(Screen parent) {
 		ConfigBuilder configBuilder = ConfigBuilder.create()
 												   .setParentScreen(parent)
-												   .setTitle(new TranslatableText("title.custom_fishing_lines.config"))
+												   .setTitle(Text.translatable("title.custom_fishing_lines.config"))
 												   .setSavingRunnable(ConfigHelper::saveConfig);
 
-		ConfigCategory configCategory = configBuilder.getOrCreateCategory(new TranslatableText("title.custom_fishing_lines.config"));
+		ConfigCategory configCategory = configBuilder.getOrCreateCategory(Text.translatable("title.custom_fishing_lines.config"));
 
 		ConfigEntryBuilder entryBuilder = configBuilder.entryBuilder();
 
 		Config config = ConfigHelper.getConfig();
 
-		configCategory.addEntry(entryBuilder.startBooleanToggle(new TranslatableText("option.custom_fishing_lines.enabled"), config.enabled)
+		configCategory.addEntry(entryBuilder.startBooleanToggle(Text.translatable("option.custom_fishing_lines.enabled"), config.enabled)
 											.setDefaultValue(true)
-											.setTooltip(new TranslatableText("option.custom_fishing_lines.enabled.tooltip"))
+											.setTooltip(Text.translatable("option.custom_fishing_lines.enabled.tooltip"))
 											.setSaveConsumer(newValue -> config.enabled = newValue)
 											.build());
 
-		configCategory.addEntry(entryBuilder.startStringDropdownMenu(new TranslatableText("option.custom_fishing_lines.pattern"), config.pattern)
+		configCategory.addEntry(entryBuilder.startStringDropdownMenu(Text.translatable("option.custom_fishing_lines.pattern"), config.pattern)
 											.setDefaultValue("")
-											.setTooltip(new TranslatableText("option.custom_fishing_lines.pattern.tooltip"))
+											.setTooltip(Text.translatable("option.custom_fishing_lines.pattern.tooltip"))
 											.setSelections(CustomFishingLines.PATTERNS.keySet())
 											.setSaveConsumer(newValue -> config.pattern = newValue)
 											.build());
 
-		configCategory.addEntry(entryBuilder.startFloatField(new TranslatableText("option.custom_fishing_lines.percentage_bias"), config.percentageBias)
+		configCategory.addEntry(entryBuilder.startFloatField(Text.translatable("option.custom_fishing_lines.percentage_bias"), config.percentageBias)
 											.setDefaultValue(2)
-											.setTooltip(new TranslatableText("option.custom_fishing_lines.percentage_bias.tooltip"))
+											.setTooltip(Text.translatable("option.custom_fishing_lines.percentage_bias.tooltip"))
 											.setSaveConsumer(newValue -> config.percentageBias = newValue)
+											.build());
+
+		configCategory.addEntry(entryBuilder.startIntField(Text.translatable("option.custom_fishing_lines.segment_count"), config.segmentCount)
+											.setDefaultValue(-1)
+											.setTooltip(Text.translatable("option.custom_fishing_lines.segment_count.tooltip"))
+											.setSaveConsumer(newValue -> config.segmentCount = newValue)
 											.build());
 
 		return configBuilder.build();
